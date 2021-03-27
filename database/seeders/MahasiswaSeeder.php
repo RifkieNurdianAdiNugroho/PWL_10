@@ -14,12 +14,24 @@ class MahasiswaSeeder extends Seeder
      */
     public function run()
     {
-        DB::insert([
-            'nim' => '1941720150',
-            'nama' => 'Octavia',
-            'kelas' => 'TI-2C',
-            'jurusan' => 'JTI',
-            'no_handphone' => '0812222',
-        ]);
+        //     $data = [[
+        //         [
+        //             'nim' => '1941720219',
+        //             'nama' => 'Rifkie Nurdian AdiNugroho',
+        //             'kelas' => 'TI-2C',
+        //             'jurusan' => 'JTI',
+        //             'no_handphone' => '081352352',
+        //         ],
+        //         [
+        //             'nim' => '19417243252',
+        //             'nama' => 'Kumbara',
+        //             'kelas' => 'TI-2C',
+        //             'jurusan' => 'JTI',
+        //             'no_handphone' => '081235346',
+        //         ],
+
+        //     ]];
+        //     DB::insert();
+        // }
     }
 }
