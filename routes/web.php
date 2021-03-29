@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\CariController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('mahasiswa', App\Http\Controllers\MahasiswaController::class);
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::post('cari', [CariController::class, 'search']);
