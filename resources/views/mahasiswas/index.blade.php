@@ -7,7 +7,7 @@
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
             </div>
             <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
+                <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <th>No_Handphone</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($mahasiswas as $Mahasiswa)
+        @foreach ($mahasiswa as $Mahasiswa)
         <tr>
 
             <td>{{ $Mahasiswa->Nim }}</td>
@@ -36,11 +36,11 @@
             <td>{{ $Mahasiswa->Jurusan }}</td>
             <td>{{ $Mahasiswa->No_Handphone }}</td>
             <td>
-                <form action="{{ route('mahasiswas.destroy',$Mahasiswa->Nim) }}" method="POST">
+                <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$Mahasiswa->Nim]) }}" method="POST">
 
-                    <a class="btn btn-info" href="{{ route('mahasiswas.show',$Mahasiswa->Nim) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('mahasiswa.show',['mahasiswa'=>$Mahasiswa->Nim]) }}">Show</a>
 
-                    <a class="btn btn-primary" href="{{ route('mahasiswas.edit',$Mahasiswa->Nim) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('mahasiswa.edit',['mahasiswa'=>$Mahasiswa->Nim]) }}">Edit</a>
 
                     @csrf
                     @method('DELETE')

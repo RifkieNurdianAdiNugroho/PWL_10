@@ -15,11 +15,11 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //$mahasiswa=Mahasiswa::all()->paginate(1);
+        $mahasiswa = Mahasiswa::all();
         // Mengambil semua isi tabel
         $posts = Mahasiswa::orderBy('nim', 'asc')->paginate(5);
         //return view('mahasiswas.index',compact('mahasiswa','posts'))->with('i',(request()->input('page',1)-1)*5);
-        return view('mahasiswas.index', compact('posts'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('mahasiswas.index', compact('mahasiswa', 'posts'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /*
