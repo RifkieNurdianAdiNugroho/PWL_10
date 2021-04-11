@@ -14,7 +14,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::width('kelas')->get();
+        $mahasiswa = Mahasiswa::with('kelas')->get();
         // Mengambil semua isi tabel
         $paginate = Mahasiswa::orderBy('nim', 'desc')->paginate(1);
         return view('mahasiswas.index', compact('mahasiswa', 'paginate'))->with('i', (request()->input('page', 1) - 1) * 5);
