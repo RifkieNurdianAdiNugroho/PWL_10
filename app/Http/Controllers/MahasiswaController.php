@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\Kelas;
 
 class MahasiswaController extends Controller
 {
@@ -27,7 +28,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswas.create');
+        $kelas = Kelas::all();
+        return view('mahasiswas.create', compact('kelas'));
     }
 
     /**
@@ -39,7 +41,7 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim' => 'required', 'nama' => 'required', 'kelas' => 'required', 'jurusan' => 'required', 'no_handphone' => 'required', 'email' => 'required', 'tanggal_lahir' => 'required'
+            'nim' => 'required', 'nama' => 'required', 'kelas_id' => 'required', 'jurusan' => 'required', 'no_handphone' => 'required', 'email' => 'required', 'tanggal_lahir' => 'required'
         ]); //fungsieloquentuntukmenambahdata
         Mahasiswa::create($request->all());
         //jikadataberhasilditambahkan,akankembalikehalamanutama
@@ -67,7 +69,8 @@ class MahasiswaController extends Controller
     public function edit($nim)
     {
         $mahasiswa = Mahasiswa::find($nim);
-        return view('mahasiswas.edit', compact('mahasiswa'));
+        $kelas = Kelas::all();
+        return view('mahasiswas.edit', compact('mahasiswa', 'kelas'));
     }
 
     /**
@@ -80,7 +83,7 @@ class MahasiswaController extends Controller
     public function update(Request $request, $nim)
     {
         $request->validate([
-            'nim' => 'required', 'nama' => 'required', 'kelas' => 'required', 'jurusan' => 'required', 'no_handphone' => 'required', 'email' => 'required', 'tanggal_lahir' => 'required'
+            'nim' => 'required', 'nama' => 'required', 'kelas_id' => 'required', 'jurusan' => 'required', 'no_handphone' => 'required', 'email' => 'required', 'tanggal_lahir' => 'required'
         ]);
         Mahasiswa::find($nim)->update($request->all());
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Diupdate');
